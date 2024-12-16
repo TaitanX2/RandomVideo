@@ -1,0 +1,29 @@
+{
+  "name": "Random Video Telegram Bot",
+  "description": "A Telegram bot that fetches random videos from a channel and provides an inline button to regenerate.",
+  "repository": "https://github.com/TaitanX2/RandomVideo",
+  "keywords": ["python", "telegram", "bot"],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "API_ID": {
+      "description": "Your Telegram API ID from https://my.telegram.org",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Your Telegram API Hash from https://my.telegram.org",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Your Telegram bot token from BotFather",
+      "required": true
+    },
+    "CHANNEL_USERNAME": {
+      "description": "The username of the channel to fetch videos from",
+      "required": true
+    }
+  }
+}
