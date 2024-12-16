@@ -5,8 +5,6 @@
   "keywords": [
     "python3",
     "telegram",
-    "bot",
-    "MusicBot",
     "telegram-bot",
     "pyrogram"
   ],
@@ -63,36 +61,5 @@
       "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
     }
   ],
-  "formation": {
-    "worker": {
-      "command": "python3 -m TaitanXFun",
-      "env": {
-        "API_ID": {
-          "value": "${API_ID}"
-        },
-        "API_HASH": {
-          "value": "${API_HASH}"
-        },
-        "BOT_TOKEN": {
-          "value": "${BOT_TOKEN}"
-        },
-        "CHANNEL_ID": {
-          "value": "${CHANNEL_ID}"
-        },
-        "MONGO_DB_URL": {
-          "value": "${MONGO_DB_URL}"
-        },
-        "OWNER_ID": {
-          "value": "${OWNER_ID}"
-        },
-        "LOG_GROUP_ID": {
-          "value": "${LOG_GROUP_ID}"
-        },
-        "START_IMAGE_URL": {
-          "value": "${START_IMAGE_URL}"
-        }
-      }
-    }
-  },
   "stack": "container"
 }
