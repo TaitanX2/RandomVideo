@@ -6,7 +6,7 @@ import random
 API_ID = "your_api_id"
 API_HASH = "your_api_hash"
 BOT_TOKEN = "your_bot_token"
-CHANNEL_USERNAME = "your_channel_username"  # Replace with the username of your channel
+CHANNEL_ID = -1001234567890  # Replace with your channel's numeric ID (start with -100)
 
 # Initialize the bot
 bot = Client("random_video_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
@@ -14,7 +14,7 @@ bot = Client("random_video_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT
 # Fetch all video messages from the channel
 async def fetch_videos(client):
     videos = []
-    async for message in client.search_messages(CHANNEL_USERNAME, filter="video"):
+    async for message in client.search_messages(CHANNEL_ID, filter="video"):
         if message.video:
             videos.append(message)
     return videos
