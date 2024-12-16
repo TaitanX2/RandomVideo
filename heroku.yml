@@ -1,20 +1,17 @@
-version: '3.8'
+# Use Python base image
+FROM python:3.9-slim
 
-services:
-  worker:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: python3 -m TaitanXFun
-    restart: always
-    volumes:
-      - .:/app
-    environment:
-      - API_ID=${API_ID}
-      - API_HASH=${API_HASH}
-      - BOT_TOKEN=${BOT_TOKEN}
-      - CHANNEL_ID=${CHANNEL_ID}
-      - MONGO_DB_URL=${MONGO_DB_URL}
-      - OWNER_ID=${OWNER_ID}
-      - LOG_GROUP_ID=${LOG_GROUP_ID}
-      - START_IMAGE_URL=${START_IMAGE_URL}
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the required files
+COPY requirements.txt .
+
+# Install the required dependencies
+RUN pip install -r requirements.txt
+
+# Copy the rest of the code
+COPY . .
+
+# Command to run the bot
+CMD ["python3", "-m", "TaitanXFun"]
