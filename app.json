@@ -1,29 +1,98 @@
 {
-  "name": "Random Video Telegram Bot",
-  "description": "A Telegram bot that fetches random videos from a channel and provides an inline button to regenerate.",
-  "repository": "https://github.com/TaitanX2/RandomVideo",
-  "keywords": ["python", "telegram", "bot"],
-  "buildpacks": [
-    {
-      "url": "heroku/python"
-    }
+  "name": "Dvis Music Bot",
+  "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls.",
+  "logo": "https://te.legra.ph/file/b8a0c1a00db3e57522b53.jpg",
+  "keywords": [
+    "python3",
+    "telegram",
+    "bot",
+    "MusicBot",
+    "telegram-bot",
+    "pyrogram"
   ],
   "env": {
     "API_ID": {
-      "description": "Your Telegram API ID from https://my.telegram.org",
+      "description": "Get this value from https://my.telegram.org",
+      "value": "",
       "required": true
     },
     "API_HASH": {
-      "description": "Your Telegram API Hash from https://my.telegram.org",
+      "description": "Get this value from https://my.telegram.org",
+      "value": "",
       "required": true
     },
     "BOT_TOKEN": {
-      "description": "Your Telegram bot token from BotFather",
+      "description": "A Bot's token from Botfather",
+      "value": "",
       "required": true
     },
-    "CHANNEL_USERNAME": {
-      "description": "The username of the channel to fetch videos from",
+    "CHANNEL_ID": {
+      "description": "The Channel ID to fetch random videos from.",
+      "value": "",
+      "required": true
+    },
+    "MONGO_DB_URL": {
+      "description": "Get a MongoDB URL from https://cloud.mongodb.com.",
+      "value": "",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "The user ID of the user whom you would like to add as OWNER.",
+      "value": "",
+      "required": true
+    },
+    "LOG_GROUP_ID": {
+      "description": "Your Log Group ID, where logs will be sent.",
+      "value": "",
+      "required": true
+    },
+    "START_IMAGE_URL": {
+      "description": "Bot start image link.",
+      "value": "",
       "required": true
     }
-  }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "command": "python3 -m TaitanXFun",
+      "env": {
+        "API_ID": {
+          "value": "${API_ID}"
+        },
+        "API_HASH": {
+          "value": "${API_HASH}"
+        },
+        "BOT_TOKEN": {
+          "value": "${BOT_TOKEN}"
+        },
+        "CHANNEL_ID": {
+          "value": "${CHANNEL_ID}"
+        },
+        "MONGO_DB_URL": {
+          "value": "${MONGO_DB_URL}"
+        },
+        "OWNER_ID": {
+          "value": "${OWNER_ID}"
+        },
+        "LOG_GROUP_ID": {
+          "value": "${LOG_GROUP_ID}"
+        },
+        "START_IMAGE_URL": {
+          "value": "${START_IMAGE_URL}"
+        }
+      }
+    }
+  },
+  "stack": "container"
 }
